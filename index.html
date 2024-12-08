@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Harga Barang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+        .item {
+            background-color: white;
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 15px;
+            width: 100px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .item h3 {
+            margin: 10px 0;
+        }
+        .item .price {
+            font-size: 18px;
+            color: #e74c3c;
+        }
+        .search-container {
+            text-align: center;
+            margin: 20px;
+        }
+        .search-container input {
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .checkout {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #333;
+            background-color: #ccc;
+        }
+        .checkout input {
+            width: 50px;
+            text-align: center;
+        }
+        .chart {
+            background-color: #45a049;
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+        }
+        .chart:hover {
+            background-color: rgb(62, 148, 119);
+            color: #ccc;
+        }
+        .butin {
+            background-color: #45a049;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="rekap.html">Rekap Checkout</a>
+        <a href="qris.html">Qris</a>
+        <a href="kontakWA.html">Contact</a>
+    </nav>
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Cari nama barang...">
+    </div>
+    <div class="container">
+        <div class="item">
+            <img src="asset/gorengan3k.jpg" alt="Barang 1">
+            <h3>Risol & Tahu Bakso</h3>
+            <p class="price">Rp 3.500</p>
+            <button class="chart" onclick="addToCart(3500)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+            <img src="asset/gorengan4k.jpg" alt="Barang 2">
+            <h3>Tahu Jamur</h3>
+            <p class="price">Rp 4.000</p>
+            <button class="chart" onclick="addToCart(4000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+            <img src="asset/nasimika.jpg" alt="Barang 3">
+            <h3>Nasi Mika</h3>
+            <p class="price">Rp 12.000</p>
+            <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+            <img src="asset/ricebowl.jpg" alt="Barang 4">
+            <h3>Rice Bowl</h3>
+            <p class="price">Rp 12.000</p>
+            <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+            <img src="asset/dino.png" alt="Barang 4">
+            <h3>Yg Lain Nyusul</h3>
+            <p class="price">tul kuntul</p>
+            <button class="chart" onclick="addToCart(0)">Tambah ke Keranjang</button>
+        </div>
+    </div>        <div class="checkout">
+            <h2>Total Harga</h2>
+            <p>Rp <span id="total">0</span></p>
+            <form action="rekap.html" method="GET" onsubmit="return saveCheckout()">
+                <input type="hidden" id="checkout-total" name="total" value="0">
+                <button class="butin" type="submit">Checkout</button>
+            </form>
+            <button class="butin" onclick="resetCart()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        // Ambil elemen pencarian dan kontainer item
+    const searchBar = document.getElementById('search-bar');
+    const itemContainer = document.getElementById('item-container');
+    const items = document.querySelectorAll('.item');
+
+    // Tambahkan event listener untuk pencarian
+    searchBar.addEventListener('input', () => {
+        const searchTerm = searchBar.value.toLowerCase();
+        items.forEach(item => {
+            const itemName = item.querySelector('h3').textContent.toLowerCase();
+            if (itemName.includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+        let total = 0;
+
+        function addToCart(price) {
+            total += price;
+            document.getElementById("total").textContent = total;
+        }
+
+        function resetCart() {
+            total = 0;
+            document.getElementById("total").textContent = total;
+        }
+
+        function saveCheckout() {
+            const checkoutDate = new Date().toLocaleString();
+            const checkoutData = {
+                date: checkoutDate,
+                total: total
+            };
+
+            let checkoutHistory = JSON.parse(localStorage.getItem("checkoutHistory")) || [];
+            checkoutHistory.push(checkoutData);
+            localStorage.setItem("checkoutHistory", JSON.stringify(checkoutHistory));
+
+            return true;
+        }
+    </script>
+</body>
+</html>
