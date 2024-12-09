@@ -35,6 +35,13 @@
             display: flex;
             flex-wrap: wrap;
             margin: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .containeritem {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
         }
         .item {
             background-color: white;
@@ -44,6 +51,9 @@
             width: 100px;
             text-align: center;
             border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
         }
         .item img {
             max-width: 100%;
@@ -72,6 +82,10 @@
             padding: 10px;
             border: 1px solid #333;
             background-color: #ccc;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
         }
         .checkout input {
             width: 50px;
@@ -96,6 +110,12 @@
             margin: 10px;
             color: white;
         }
+        form {
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+        }
     </style>
 </head>
 <body>
@@ -109,37 +129,104 @@
         <input type="text" id="search-bar" placeholder="Cari nama barang...">
     </div>
     <div class="container">
-        <div class="item">
-            <img src="asset/gorengan3k.jpg" alt="Barang 1">
-            <h3>Risol & Tahu Bakso</h3>
-            <p class="price">Rp 3.500</p>
-            <button class="chart" onclick="addToCart(3500)">Tambah ke Keranjang</button>
+        <hr>
+            <h2>Gorengan</h2>
+            <hr>
+        <div class="containeritem">
+            
+            <div class="item">
+                <img src="asset/gorengan3k.jpg" alt="Barang 1">
+                <h3>Risol & Tahu Bakso</h3>
+                <p class="price">Rp 3.500</p>
+                <button class="chart" onclick="addToCart(3500)">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="asset/gorengan4k.jpg" alt="Barang 2">
+                <h3>Tahu Jamur</h3>
+                <p class="price">Rp 4.000</p>
+                <button class="chart" onclick="addToCart(4000)">Tambah ke Keranjang</button>
+            </div>
         </div>
-        <div class="item">
-            <img src="asset/gorengan4k.jpg" alt="Barang 2">
-            <h3>Tahu Jamur</h3>
-            <p class="price">Rp 4.000</p>
-            <button class="chart" onclick="addToCart(4000)">Tambah ke Keranjang</button>
+        <hr>
+            <h2>Makanan Mika</h2>
+            <hr>
+        <div class="containeritem">
+            
+            <div class="item">
+                <img src="asset/ricebowl.jpg" alt="Barang 4">
+                <h3>Rice Bowl</h3>
+                <p class="price">Rp 12.000</p>
+                <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
+            </div>
+            
+            
+            <div class="item">
+                <img src="asset/nasigoreng.jpg" alt="Barang 4">
+                <h3>Nasi goreng</h3>
+                <p class="price">Rp 11.000</p>
+                <button class="chart" onclick="addToCart(11000)">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="asset/nasimika.jpg" alt="Barang 3">
+                <h3>Nasi Mika</h3>
+                <p class="price">Rp 12.000</p>
+                <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
+            </div>
+            
+            <div class="item">
+                <img src="asset/nasimika1.jpg" alt="Barang 4">
+                <h3>Nasi mika cornet</h3>
+                <p class="price">Rp 12.000</p>
+                <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="asset/nasimika2.jpg" alt="Barang 4">
+                <h3>Nasi mika telur tahu tempe</h3>
+                <p class="price">Rp 12.000</p>
+                <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="asset/nasimika3.jpg" alt="Barang 4">
+                <h3>Nasi ayam geprek</h3>
+                <p class="price">Rp 12.000</p>
+                <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="asset/nasikuning.jpg" alt="Barang 4">
+                <h3>Nasi kuning</h3>
+                <p class="price">Rp 12.000</p>
+                <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="item">
+                <img src="asset/martabaktelur.jpg" alt="Barang 4">
+                <h3>Martabak telur</h3>
+                <p class="price">Rp 8.000</p>
+                <button class="chart" onclick="addToCart(8000)">Tambah ke Keranjang</button>
+            </div>
+                <div class="item">
+                    <img src="asset/mie.jpg" alt="Barang 4">
+                    <h3>Mie mika</h3>
+                    <p class="price">Rp 8.000</p>
+                    <button class="chart" onclick="addToCart(8000)">Tambah ke Keranjang</button>
+                </div>
+                <div class="item">
+                    <img src="asset/dimsum.jpg" alt="Barang 4">
+                    <h3>Dimsum</h3>
+                    <p class="price">Rp 10.000</p>
+                    <button class="chart" onclick="addToCart(10000)">Tambah ke Keranjang</button>
+                </div>
+                
+                
+            
         </div>
-        <div class="item">
-            <img src="asset/nasimika.jpg" alt="Barang 3">
-            <h3>Nasi Mika</h3>
-            <p class="price">Rp 12.000</p>
-            <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
+        
+        <div class="containeritem">
+            
         </div>
-        <div class="item">
-            <img src="asset/ricebowl.jpg" alt="Barang 4">
-            <h3>Rice Bowl</h3>
-            <p class="price">Rp 12.000</p>
-            <button class="chart" onclick="addToCart(12000)">Tambah ke Keranjang</button>
-        </div>
-        <div class="item">
-            <img src="asset/dino.png" alt="Barang 4">
-            <h3>Yg Lain Nyusul</h3>
-            <p class="price">tul kuntul</p>
-            <button class="chart" onclick="addToCart(0)">Tambah ke Keranjang</button>
-        </div>
-    </div>        <div class="checkout">
+        
+    </div>
+    <div class="checkout">
             <h2>Total Harga</h2>
             <p>Rp <span id="total">0</span></p>
             <form action="rekap.html" method="GET" onsubmit="return saveCheckout()">
